@@ -1,0 +1,14 @@
+server:
+  port: 22909
+ali:
+  oss:
+    endpoint: oss-cn-guangzhou.aliyuncs.com
+    accessKeyId: 123456
+    accessKeySecret: 123456789abcdefg
+    bucket: your-bucket
+    prefix: 壁纸/文件夹1
+    hostname: #如https://your-bucket.oss-accelerate.aliyuncs.com
+logging:
+  logback:
+    file:
+      path: ./logs

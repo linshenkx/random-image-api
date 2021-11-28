@@ -1,0 +1,86 @@
+buildscript {
+    repositories {
+        maven { url 'https://mirrors.huaweicloud.com/repository/maven/' }
+    }
+}
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.6.0'
+    id 'maven-publish'
+    id 'com.palantir.docker' version '0.30.0'
+
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-validation:2.6.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.0'
+    implementation 'org.springframework.boot:spring-boot-configuration-processor:2.6.0'
+    runtimeOnly 'org.springframework.boot:spring-boot-devtools:2.6.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.0'
+
+    implementation 'com.aliyun.oss:aliyun-sdk-oss:3.13.2'
+    implementation 'cn.hutool:hutool-all:5.7.16'
+    implementation 'com.google.guava:guava:31.0.1-jre'
+
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+    testCompileOnly 'org.projectlombok:lombok:1.18.22'
+
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.0'
+    implementation 'org.hibernate:hibernate-validator:7.0.1.Final'
+    implementation 'org.glassfish:jakarta.el:4.0.2'
+
+}
+
+group = 'cn.linshenkx'
+version = '1.0.0'
+description = 'random-image-api'
+java.sourceCompatibility = JavaVersion.VERSION_11
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+bootJar {
+}
+task unpack(type: Copy) {
+    dependsOn bootJar
+    from(zipTree(tasks.bootJar.outputs.files.singleFile))
+    exclude("**/*application.yaml")
+    into("build/dependency")
+}
+
+docker {
+    name "linshen/random-image-api"
+    tag "version","linshen/random-image-api:${project.version}"
+    tag "latest","linshen/random-image-api:latest"
+    dockerfile file('Dockerfile')
+    copySpec.from(tasks.unpack.outputs).into("dependency")
+    //构建前是否拉取最新基础镜像
+    pull true
+    //是否从头构建
+    noCache false
+}
+
+task buildImage() {
+    dependsOn dockerTag
+}
+task pushImage() {
+    dependsOn dockerTagsPush
+}
