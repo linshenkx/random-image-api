@@ -22,7 +22,7 @@ public class SchedulerTask {
 
 
     @Async("taskExecutor")
-    @Scheduled(fixedDelay = 60 * 1000)
+    @Scheduled(fixedDelay = 30 * 60 * 1000)
     public void checkJobStatus() {
         try {
             imageService.syncImageUrlList();
