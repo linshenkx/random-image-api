@@ -1,9 +1,9 @@
 ## 项目说明
 随机图api，接入第三方云存储，获取云存储的图片url并随机返回。
-目前只对接了阿里oss。
-可作为 halo-Sakura主题 的随机图api。
+采用模块化开发，方便拓展。目前已对接阿里oss。
+另外做了空实现，返回固定url。 
+可以在配置文件中指定my.global.sourceType为SIMPLE进行切换体验。
 ## TODO
-
 
 ## 使用方法
 建议使用docker部署

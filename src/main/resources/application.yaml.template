@@ -1,14 +1,38 @@
 server:
   port: 22909
-ali:
-  oss:
+my:
+  global:
+  #    sourceType: TX_COS
+    sourceType: ALI_OSS
+  jobs:
+    schedule: "0 */2 * * * ?"
+  ali-oss:
     endpoint: oss-cn-guangzhou.aliyuncs.com
     accessKeyId: 123456
     accessKeySecret: 123456789abcdefg
     bucket: your-bucket
     prefix: 壁纸/文件夹1
     hostname: #如https://your-bucket.oss-accelerate.aliyuncs.com
+    maxFileSize: 6291456 # 6Mb,最大为20Mb,阿里不支持操作20Mb以上的图片
+    imageStyle: # 即使是max也建议开启压缩，可以有效降低图片体积，也可以使用阿里的图片压缩参数（收费）
+      min: "?x-oss-process=image/quality,q_20"
+      medium: "?x-oss-process=image/quality,q_60"
+      max: "?x-oss-process=image/quality,q_80"
 logging:
   logback:
     file:
       path: ./logs
+
+spring:
+  task:
+    execution:
+      pool:
+        max-size: 16
+        queue-capacity: 100
+        keep-alive: "10s"
+        core-size: 1
+    scheduling.:
+      thread-name-prefix: "scheduling-"
+      pool:
+        size: 2
+

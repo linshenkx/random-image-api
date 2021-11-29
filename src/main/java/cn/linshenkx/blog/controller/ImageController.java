@@ -1,16 +1,17 @@
 package cn.linshenkx.blog.controller;
 
 import cn.hutool.core.util.RandomUtil;
+import cn.linshenkx.blog.enums.SourceTypeImpl;
+import cn.linshenkx.blog.props.GlobalProp;
 import cn.linshenkx.blog.service.ImageService;
+import cn.linshenkx.blog.util.SpringContextUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -19,29 +20,25 @@ import java.io.IOException;
 public class ImageController {
 
     @Resource
-    private ImageService imageService;
+    private GlobalProp globalProp;
+    @Resource
+    private SpringContextUtil springContextUtil;
 
     @GetMapping("/random")
-    public String getRandomImage(Integer th,HttpServletResponse response){
-
+    public String getRandomImage(@RequestParam Map<String, Object> paramsMap, HttpServletResponse response) {
+        ImageService imageService = null;
         try {
-            String url = RandomUtil.randomEle(imageService.getJpgImageUrlList());
-            String style;
-//            if(th!=null){
-//                style= "?x-oss-process=image/format,webp/resize,m_lfit,l_"+th;
-//            }else {
-//                style= "?x-oss-process=image/quality,q_80";
-//            }
-            if(th!=null){
-                style= "?x-oss-process=image/quality,q_20";
-            }else {
-                style= "?x-oss-process=image/quality,q_80";
-            }
-            url=url+style;
-            response.sendRedirect(url);
+            imageService = SpringContextUtil.getBeansWithAnnotaionValue(ImageService.class, SourceTypeImpl.class, globalProp.getSourceType());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            String url = RandomUtil.randomEle(imageService.getImageUrlList());
+            response.sendRedirect(imageService.formatImageUrl(paramsMap, url));
         } catch (IOException e) {
             log.error(e.getMessage(), e);
         }
+        SourceTypeImpl.class.getClass();
         return "Hello";
     }
 

@@ -1,12 +1,13 @@
 package cn.linshenkx.blog.service;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Map;
 
 public interface ImageService {
 
-    List<String> getImageUrlList() throws UnsupportedEncodingException;
-    List<String> getJpgImageUrlList() throws UnsupportedEncodingException;
+    List<String> getImageUrlList();
 
-    void syncImageUrlList() throws UnsupportedEncodingException;
+    String formatImageUrl(Map<String, Object> param, String url);
+
+    void syncImageUrlList();
 }

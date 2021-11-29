@@ -1,5 +1,7 @@
 package cn.linshenkx.blog.props;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -9,7 +11,7 @@ import org.springframework.validation.annotation.Validated;
 @Data
 @Component
 @Validated
-@ConfigurationProperties(prefix = "ali.oss")
+@ConfigurationProperties(prefix = "my.ali-oss")
 public class AliOssProp {
     @NotNull
     private String endpoint;
@@ -23,4 +25,16 @@ public class AliOssProp {
     private String prefix;
     @NotNull
     private String hostname;
+    @Min(1)
+    @Max(20971520)
+    private Long maxFileSize;
+    @NotNull
+    private ImageStyle imageStyle;
+
+    @Data
+    public static class ImageStyle {
+        private String min;
+        private String medium;
+        private String max;
+    }
 }
