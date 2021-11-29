@@ -1,4 +1,4 @@
-package cn.linshenkx.blog.props;
+package cn.linshenkx.randomimageapi.modules.alioss;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -11,6 +11,7 @@ import org.springframework.validation.annotation.Validated;
 @Data
 @Component
 @Validated
+//@ConditionalOnProperty(prefix = "my.global", name = "sourceType", havingValue = "ALI_OSS")
 @ConfigurationProperties(prefix = "my.ali-oss")
 public class AliOssProp {
     @NotNull

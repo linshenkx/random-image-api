@@ -1,4 +1,4 @@
-package cn.linshenkx.blog;
+package cn.linshenkx.randomimageapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

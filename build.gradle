@@ -41,7 +41,7 @@ dependencies {
 }
 
 group = 'cn.linshenkx'
-version = '1.0.0'
+version = '1.0.1'
 description = 'random-image-api'
 java.sourceCompatibility = JavaVersion.VERSION_11
 

@@ -1,8 +1,7 @@
 ## 项目说明
 随机图api，接入第三方云存储，获取云存储的图片url并随机返回。
 采用模块化开发，方便拓展。目前已对接阿里oss。
-另外做了空实现，返回固定url。 
-可以在配置文件中指定my.global.sourceType为SIMPLE进行切换体验。
+另外默认做了空实现，返回固定url。（my.global.sourceType为SIMPLE） 
 ## TODO
 
 ## 使用方法
@@ -28,6 +27,13 @@ docker run -it -d --name randomImageApi \
 -p 32919:22909 \
 -v /opt/randomImageApi/config:/application/config \
 -v /opt/randomImageApi/logs:/application/logs \
+--restart=always \
+linshen/random-image-api
+
+
+docker run -it -d --name randomImageApi-simple \
+-p 32929:22909 \
+-v /tmp/randomImageApi/config:/application/config \
 --restart=always \
 linshen/random-image-api
 

@@ -1,10 +1,9 @@
-package cn.linshenkx.blog.service.impl;
+package cn.linshenkx.randomimageapi.modules.alioss;
 
 import cn.hutool.core.io.FileUtil;
-import cn.linshenkx.blog.enums.SourceType;
-import cn.linshenkx.blog.enums.SourceTypeImpl;
-import cn.linshenkx.blog.props.AliOssProp;
-import cn.linshenkx.blog.service.ImageService;
+import cn.linshenkx.randomimageapi.enums.SourceType;
+import cn.linshenkx.randomimageapi.enums.SourceTypeImpl;
+import cn.linshenkx.randomimageapi.service.ImageService;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.model.ListObjectsV2Request;
 import com.aliyun.oss.model.ListObjectsV2Result;
@@ -12,6 +11,7 @@ import com.aliyun.oss.model.OSSObjectSummary;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @SourceTypeImpl(SourceType.ALI_OSS)
+@ConditionalOnProperty(prefix = "my.global", name = "sourceType", havingValue = "ALI_OSS")
 public class ImageServiceAliOssImpl implements ImageService {
 
     @Resource

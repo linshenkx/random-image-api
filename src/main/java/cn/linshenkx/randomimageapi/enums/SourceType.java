@@ -1,4 +1,4 @@
-package cn.linshenkx.blog.enums;
+package cn.linshenkx.randomimageapi.enums;
 
 public enum SourceType {
     /**

@@ -1,8 +1,8 @@
-package cn.linshenkx.blog.service.impl;
+package cn.linshenkx.randomimageapi.modules.simple;
 
-import cn.linshenkx.blog.enums.SourceType;
-import cn.linshenkx.blog.enums.SourceTypeImpl;
-import cn.linshenkx.blog.service.ImageService;
+import cn.linshenkx.randomimageapi.enums.SourceType;
+import cn.linshenkx.randomimageapi.enums.SourceTypeImpl;
+import cn.linshenkx.randomimageapi.service.ImageService;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -31,6 +31,6 @@ public class ImageServiceSimpleImpl implements ImageService {
 
     @Override
     public void syncImageUrlList() {
-        imageUrlList.set(Lists.newArrayList("https://lian-gallery.oss-accelerate.aliyuncs.com/%E5%A3%81%E7%BA%B8%2Fllss%2F2015_05%2F29.jpg?x-oss-process=image/quality,q_20"));
+        imageUrlList.set(Lists.newArrayList("https://lian-gallery.oss-cn-guangzhou.aliyuncs.com/halo/20211119231827_1637418874326.png"));
     }
 }

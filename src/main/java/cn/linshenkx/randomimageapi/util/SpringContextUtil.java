@@ -1,4 +1,4 @@
-package cn.linshenkx.blog.util;
+package cn.linshenkx.randomimageapi.util;
 
 import com.google.common.collect.Lists;
 import org.springframework.aop.support.AopUtils;

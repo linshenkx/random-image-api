@@ -1,6 +1,6 @@
-package cn.linshenkx.blog.props;
+package cn.linshenkx.randomimageapi.props;
 
-import cn.linshenkx.blog.enums.SourceType;
+import cn.linshenkx.randomimageapi.enums.SourceType;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -1,10 +1,10 @@
-package cn.linshenkx.blog.controller;
+package cn.linshenkx.randomimageapi.controller;
 
 import cn.hutool.core.util.RandomUtil;
-import cn.linshenkx.blog.enums.SourceTypeImpl;
-import cn.linshenkx.blog.props.GlobalProp;
-import cn.linshenkx.blog.service.ImageService;
-import cn.linshenkx.blog.util.SpringContextUtil;
+import cn.linshenkx.randomimageapi.enums.SourceTypeImpl;
+import cn.linshenkx.randomimageapi.props.GlobalProp;
+import cn.linshenkx.randomimageapi.service.ImageService;
+import cn.linshenkx.randomimageapi.util.SpringContextUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 

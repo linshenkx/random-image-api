@@ -1,4 +1,4 @@
-package cn.linshenkx.blog.service;
+package cn.linshenkx.randomimageapi.service;
 
 import java.util.List;
 import java.util.Map;

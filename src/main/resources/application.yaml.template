@@ -2,8 +2,7 @@ server:
   port: 22909
 my:
   global:
-  #    sourceType: TX_COS
-    sourceType: ALI_OSS
+    sourceType: SIMPLE
   jobs:
     schedule: "0 */2 * * * ?"
   ali-oss:

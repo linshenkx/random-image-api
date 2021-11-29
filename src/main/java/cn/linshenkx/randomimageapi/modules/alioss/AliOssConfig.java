@@ -1,13 +1,14 @@
-package cn.linshenkx.blog.config;
+package cn.linshenkx.randomimageapi.modules.alioss;
 
-import cn.linshenkx.blog.props.AliOssProp;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.Resource;
 
+@ConditionalOnProperty(prefix = "my.global", name = "sourceType", havingValue = "ALI_OSS")
 @Configuration
 public class AliOssConfig {
 

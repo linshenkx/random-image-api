@@ -1,9 +1,9 @@
-package cn.linshenkx.blog.scheduler;
+package cn.linshenkx.randomimageapi.scheduler;
 
-import cn.linshenkx.blog.enums.SourceTypeImpl;
-import cn.linshenkx.blog.props.GlobalProp;
-import cn.linshenkx.blog.service.ImageService;
-import cn.linshenkx.blog.util.SpringContextUtil;
+import cn.linshenkx.randomimageapi.enums.SourceTypeImpl;
+import cn.linshenkx.randomimageapi.props.GlobalProp;
+import cn.linshenkx.randomimageapi.service.ImageService;
+import cn.linshenkx.randomimageapi.util.SpringContextUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
